@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Account</title>
+</head>
+<body>
+    <script>
+        class BankAccount {
+            static existingAccountNumbers = [];
+
+            constructor(accountNumber, ownerName, balance) {
+                if (BankAccount.existingAccountNumbers.includes(accountNumber)) {
+                    console.error("Error: Account number already exists. Please choose a different account number.");
+                    return;
+                }
+                this.accountNumber = accountNumber;
+                this.ownerName = ownerName;
+                this.balance = balance;
+                BankAccount.existingAccountNumbers.push(accountNumber);
+            }
+
+            deposit(amount) {
+                this.balance += amount;
+                console.log(`Deposited $${amount} into account ${this.accountNumber}`);
+            }
+
+            withdraw(amount) {
+                if (amount <= this.balance) {
+                    this.balance -= amount;
+                    console.log(`Withdrawn $${amount} from account ${this.accountNumber}`);
+                } else {
+                    console.log("Insufficient funds");
+                }
+            }
+
+            displayAccountInfo() {
+                console.log("Account Information:");
+                console.log(`Account Number: ${this.accountNumber}`);
+                console.log(`Owner Name: ${this.ownerName}`);
+                console.log(`Balance: $${this.balance}`);
+                console.log("");
+            }
+        }
+
+        const accounts = [
+            new BankAccount(1001, "John Doe", 5000),
+            new BankAccount(1002, "Jane Smith", 10000),
+        ];
+
+        accounts.forEach(account => {
+            if (account instanceof BankAccount) {
+                console.log("Initial Account Information:");
+                account.displayAccountInfo();
+
+                const depositAmount = Math.floor(Math.random() * 100) + 1;
+                account.deposit(depositAmount);
+                account.withdraw(Math.floor(Math.random() * account.balance) + 1);
+
+                console.log("\nUpdated Account Information:");
+                account.displayAccountInfo();
+            }
+        });
+
+    </script>
+</body>
+</html>

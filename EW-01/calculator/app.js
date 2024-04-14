@@ -1,15 +1,15 @@
 function calculate() {
-    var num1 = parseFloat(document.getElementById('num1').value);
-    var num2 = parseFloat(document.getElementById('num2').value);
-    var operation = document.getElementById('operation').value;
-    var resultLabel = document.getElementById('resultLabel');
-    var alertDiv = document.getElementById('alertDiv');
+    let num1 = parseFloat(document.getElementById('num1').value);
+    let num2 = parseFloat(document.getElementById('num2').value);
+    let operation = document.getElementById('operation').value;
+    let resultLabel = document.getElementById('resultLabel');
+    let alertDiv = document.getElementById('alertDiv');
 
     alertDiv.innerHTML = '';
 
-    var num1Input = document.getElementById('num1');
-    var num2Input = document.getElementById('num2');
-    var operationInput = document.getElementById('operation');
+    let num1Input = document.getElementById('num1');
+    let num2Input = document.getElementById('num2');
+    let operationInput = document.getElementById('operation');
 
     num1Input.classList.remove('is-invalid');
     num2Input.classList.remove('is-invalid');
@@ -33,7 +33,7 @@ function calculate() {
         return;
     }
 
-    var calculationResult;
+    let calculationResult;
 
     if (operation === 'add') {
         calculationResult = num1 + num2;
@@ -57,9 +57,8 @@ function calculate() {
 }
 
 function showAlert(message, type) {
-    var alertDiv = document.getElementById('alertDiv');
-    var alertClass = 'alert alert-' + type;
-    var alertMessage = '<div class="' + alertClass + '" role="alert">' + message + '</div>';
-    alertDiv.innerHTML = alertMessage;
+    let alertDiv = document.getElementById('alertDiv');
+    let alertClass = 'alert alert-' + type;
+    alertDiv.innerHTML = '<div class="' + alertClass + '" role="alert">' + message + '</div>';
 }
 
